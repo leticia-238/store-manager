@@ -3,13 +3,13 @@ const productsModel = require('../models/productsModel');
 const NotFoundError = require('../errors/NotFoundError');
 
 const productsService = {
-  listAll: async () => {
-    const products = await productsModel.list();
+  getAll: async () => {
+    const products = await productsModel.getAll();
     return products;
   },
   
   getById: async (id) => {
-    const product = await productsModel.get(id);
+    const product = await productsModel.getById(id);
     if (!product) throw new NotFoundError('Product not found');
     return product;
   },
