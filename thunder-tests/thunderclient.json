@@ -54,5 +54,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "bec0f094-f241-4e4f-94ee-f70d339f26ee",
+    "colId": "7f9f169d-e1fa-479a-9b62-5ae7ac2855e0",
+    "containerId": "",
+    "name": "get product by inexistent id ",
+    "url": "localhost:3000/products/10",
+    "method": "GET",
+    "sortNum": 35000,
+    "created": "2022-06-30T18:36:22.684Z",
+    "modified": "2022-06-30T18:36:51.592Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
