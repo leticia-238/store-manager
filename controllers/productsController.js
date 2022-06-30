@@ -7,7 +7,7 @@ const productsController = {
   },
   
   getById: async (req, res) => {
-    const { id } = productsService.validateId(req.params)
+    const { id } = await productsService.validateId(req.params)
     const product = await productsService.getById(id)
     res.json(product)
   }
