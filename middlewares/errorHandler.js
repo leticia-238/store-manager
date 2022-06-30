@@ -1,4 +1,3 @@
-
 const errorHandler = (err, _req, res, _next) => {
   const { name, message } = err;
   switch (name) {
@@ -11,7 +10,6 @@ const errorHandler = (err, _req, res, _next) => {
     default: res.status(500).send({ message });
       break;
   }
-}
+};
 
-
-module.exports = errorHandler
+module.exports = errorHandler;
