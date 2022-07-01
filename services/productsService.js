@@ -14,11 +14,11 @@ const productsService = {
     return product;
   },
   
-  validateId: async (value) => {
+  validateId: async (id) => {
     const schema = Joi.object({
       id: Joi.number().required().positive().integer(),
     }).required();
-    const result = await schema.validateAsync(value);
+    const result = await schema.validateAsync({ id });
     return result;
   },
 };
