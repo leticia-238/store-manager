@@ -31,7 +31,7 @@ describe('Teste unitário do productsService', () => {
       expect(result).to.be.deep.equal(PRODUCT);
     });
     
-    it('dispara um erro se o produto não for encontrado', async () => {
+    it('deve disparar um erro se o produto não for encontrado', async () => {
       sinon.stub(productsModel, 'getById').resolves(undefined);
       
       return expect(productsService.getById(NON_EXISTENT_ID))

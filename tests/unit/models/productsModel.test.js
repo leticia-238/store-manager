@@ -9,7 +9,7 @@ describe('Teste unitário do productsModel', () => {
   afterEach(sinon.restore);
   
   describe('lista todos os produtos', () => {
-    it('deve retornar uma lista de produtos', async () => {
+    it('deve retornar uma lista com todos os produtos', async () => {
       sinon.stub(db, 'query').resolves([PRODUCTS_LIST]);
       const result = await productsModel.getAll();
       expect(result).to.be.deep.equal(PRODUCTS_LIST);
@@ -23,7 +23,7 @@ describe('Teste unitário do productsModel', () => {
       expect(result).to.be.deep.equal(PRODUCT);
     });
     
-    it('deve retornar um array vazio se o produto não for encontrado', async () => {
+    it('deve retornar undefined se o produto não for encontrado', async () => {
       sinon.stub(db, 'query').resolves([[]]);
       const result = await productsModel.getById(PRODUCT.id);
       expect(result).to.be.undefined;
