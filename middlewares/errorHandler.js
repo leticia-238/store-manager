@@ -7,7 +7,7 @@ const errorHandler = (err, _req, res, _next) => {
     case 'NotFoundError':
       res.status(404).json({ message });
       break;
-    case 'UnprocessableEntity':
+    case 'UnprocessableEntityError':
       res.status(422).json({ message });
       break;
     default: res.status(500).send({ message });
