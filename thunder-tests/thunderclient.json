@@ -68,5 +68,43 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "fb76d724-9c5c-40f0-b62a-6071959da346",
+    "colId": "7f9f169d-e1fa-479a-9b62-5ae7ac2855e0",
+    "containerId": "",
+    "name": "post product",
+    "url": "localhost:3000/products",
+    "method": "POST",
+    "sortNum": 50000,
+    "created": "2022-07-04T21:54:07.500Z",
+    "modified": "2022-07-04T22:40:03.781Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": " {\n    \"name\": \"55o\"\n }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "87a1c1cb-af7c-44a4-851a-25ffbc18f491",
+    "colId": "7f9f169d-e1fa-479a-9b62-5ae7ac2855e0",
+    "containerId": "",
+    "name": "post product invalid",
+    "url": "localhost:3000/products",
+    "method": "POST",
+    "sortNum": 60000,
+    "created": "2022-07-04T22:38:37.575Z",
+    "modified": "2022-07-05T00:40:49.605Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": " {\n    \"name\": \"77\"\n }",
+      "form": []
+    },
+    "tests": []
   }
 ]
