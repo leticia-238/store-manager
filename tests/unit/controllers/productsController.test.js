@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const productsService = require('../../../services/productsService');
 const productsController = require('../../../controllers/productsController');
 
-const { PRODUCTS_LIST, PRODUCT } = require('../data');
+const { PRODUCTS_LIST, PRODUCT, NEW_PRODUCT, SAVED_PRODUCT } = require('../data');
 const NotFoundError = require('../../../errors/NotFoundError');
 
 chai.use(chaiAsPromised);
@@ -13,7 +13,7 @@ const { expect } = chai;
 
 describe('Teste unitário do productsController', () => {
   const res = {};
-  const req = { params: {} };
+  const req = { params: {}, body: {} };
   
   before(() => {
     res.status = sinon.stub().callsFake(() => res);
@@ -57,4 +57,21 @@ describe('Teste unitário do productsController', () => {
         .to.eventually.be.rejected;
     });
   });
+  
+  describe('adiciona um novo produto', () => {
+    it('deve retornar o produto adicionado', async () => {
+      sinon.stub(productsService, 'validateProduct').resolves();
+      sinon.stub(productsService, 'add').resolves(SAVED_PRODUCT);
+      await productsController.add(req, res);
+      expect(res.status.calledWith(200)).to.be.equal(true);
+      expect(res.json.calledWith(SAVED_PRODUCT)).to.be.equal(true);
+    })
+    
+    it('deve disparar um erro caso o productsService.validateProduct dispare um erro',
+    async () => {
+      sinon.stub(productsService, 'validateProduct').rejects();
+      return expect(productsController.add(req, res))
+        .to.eventually.be.rejected;
+    })
+  })
 });

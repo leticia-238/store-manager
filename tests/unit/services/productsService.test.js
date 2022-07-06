@@ -5,7 +5,11 @@ const NotFoundError = require('../../../errors/NotFoundError');
 const productsModel = require('../../../models/productsModel');
 const productsService = require('../../../services/productsService');
 
-const { PRODUCTS_LIST, PRODUCT } = require('../data');
+const {
+  PRODUCTS_LIST,
+  PRODUCT, NEW_PRODUCT,
+  INSERT_ID,
+  SAVED_PRODUCT } = require('../data');
 
 chai.use(chaiAsPromised);
 
@@ -38,4 +42,12 @@ describe('Teste unitário do productsService', () => {
         .to.eventually.be.rejectedWith(NotFoundError);
     });
   });
+  
+  describe('adiciona um novo produto', () => {
+    it('deve retornar o produto adicionado', async () => {
+      sinon.stub(productsModel, 'add').resolves({ insertId: INSERT_ID });
+      const result = await productsService.add(NEW_PRODUCT)
+      expect(result).to.be.deep.equal(SAVED_PRODUCT);
+    })
+  })
 });

@@ -29,4 +29,16 @@ describe('Teste unitário do productsModel', () => {
       expect(result).to.be.undefined;
     });
   });
+  
+  describe('adiciona um novo produto', () => {
+    it('deve retornar um objeto com o id do produto adicionado', async () => {
+      const NEW_PRODUCT = { name: "ProdutoX" }
+      const INSERT_ID = 3;
+      
+      sinon.stub(db, 'query').resolves([{ insertId:INSERT_ID }]);
+
+      const result = await productsModel.add(NEW_PRODUCT)
+      expect(result).to.be.deep.equal({ insertId:INSERT_ID });
+    })
+  })
 });
