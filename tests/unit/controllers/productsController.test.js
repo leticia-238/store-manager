@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const productsService = require('../../../services/productsService');
 const productsController = require('../../../controllers/productsController');
 
-const { PRODUCTS_LIST, PRODUCT, NEW_PRODUCT, SAVED_PRODUCT } = require('../data');
+const { PRODUCTS_LIST, PRODUCT, SAVED_PRODUCT } = require('../data');
 const NotFoundError = require('../../../errors/NotFoundError');
 
 chai.use(chaiAsPromised);
@@ -15,7 +15,8 @@ describe('Teste unitário do productsController', () => {
   const res = {};
   const req = { params: {}, body: {} };
   
-  before(() => {
+  beforeEach(() => {
+    sinon.resetHistory();
     res.status = sinon.stub().callsFake(() => res);
     res.json = sinon.stub().returns();
   });
@@ -63,7 +64,7 @@ describe('Teste unitário do productsController', () => {
       sinon.stub(productsService, 'validateProduct').resolves();
       sinon.stub(productsService, 'add').resolves(SAVED_PRODUCT);
       await productsController.add(req, res);
-      expect(res.status.calledWith(200)).to.be.equal(true);
+      expect(res.status.calledWith(201)).to.be.equal(true);
       expect(res.json.calledWith(SAVED_PRODUCT)).to.be.equal(true);
     })
     
