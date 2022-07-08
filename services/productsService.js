@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const productsModel = require('../models/productsModel');
 const NotFoundError = require('../errors/NotFoundError');
-const UnprocessableEntityError = require('../errors/UnprocessableEntityError');
+const handleJoiError = require('./helpers/handleJoiError');
 
 const productsService = {
   getAll: async () => {
@@ -22,20 +22,14 @@ const productsService = {
   },
   
   validateId: async (id) => {
-    const schema = Joi.object({
-      id: Joi.number().required().positive().integer(),
-    }).required();
-    const result = await schema.validateAsync({ id });
+    const schema = Joi.number().required().positive().integer();
+    const result = await schema.validateAsync(id);
     return result;
   },
   
   validateProduct: async (product) => {
     const schema = Joi.object({
-      name: Joi.string().required().min(5).error((error) => {
-        const [{ code }] = error;
-        if (code === 'string.min') return new UnprocessableEntityError(error);
-        return error;
-      }),
+      name: Joi.string().required().min(5).error(handleJoiError),
     });
     
     const result = await schema.validateAsync(product);
