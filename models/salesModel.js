@@ -1,7 +1,39 @@
 const db = require('./db');
 
 const salesModel = {
-  getByIds: async (ids) => {
+  getAllSales: async () => {
+    const sql = `
+      SELECT 
+        sales.id AS saleId,
+        sales.date,
+        sales_products.product_id AS productId,
+        sales_products.quantity
+      FROM StoreManager.sales AS sales
+      RIGHT JOIN StoreManager.sales_products AS sales_products 
+      ON sales.id = sales_products.sale_id
+      ORDER BY sale_id ASC, product_id ASC;
+    `;
+    const [result] = await db.query(sql);
+    return result;
+  },
+  
+  getSaleById: async (id) => {
+    const sql = `
+      SELECT 
+        sales.date,
+        sales_products.product_id AS productId,
+        sales_products.quantity 
+      FROM StoreManager.sales AS sales
+      RIGHT JOIN StoreManager.sales_products AS sales_products 
+      ON sales.id = sales_products.sale_id
+      WHERE sale_id = ?
+      ORDER BY product_id ASC;
+    `;
+    const [result] = await db.query(sql, [id]);
+    return result;
+  },
+  
+  getProductsByIds: async (ids) => {
     const sql = 'SELECT * FROM StoreManager.products WHERE id IN (?)';
     const [result] = await db.query(sql, [ids]);
     return result;
