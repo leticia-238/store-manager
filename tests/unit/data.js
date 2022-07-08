@@ -8,7 +8,7 @@ const PRODUCT = {
   name: 'Martelo de Thor',
 };
 
-const NEW_PRODUCT = { name: "ProdutoX" };
+const NEW_PRODUCT = { name: 'ProdutoX' };
 const INSERT_ID = 3;
 const SAVED_PRODUCT = { ...NEW_PRODUCT, id: INSERT_ID };
 
@@ -17,5 +17,5 @@ module.exports = {
   PRODUCT,
   NEW_PRODUCT,
   INSERT_ID,
-  SAVED_PRODUCT
+  SAVED_PRODUCT,
 };

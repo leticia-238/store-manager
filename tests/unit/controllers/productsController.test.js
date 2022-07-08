@@ -66,13 +66,13 @@ describe('Teste unitário do productsController', () => {
       await productsController.add(req, res);
       expect(res.status.calledWith(201)).to.be.equal(true);
       expect(res.json.calledWith(SAVED_PRODUCT)).to.be.equal(true);
-    })
+    });
     
     it('deve disparar um erro caso o productsService.validateProduct dispare um erro',
     async () => {
       sinon.stub(productsService, 'validateProduct').rejects();
       return expect(productsController.add(req, res))
         .to.eventually.be.rejected;
-    })
-  })
+    });
+  });
 });

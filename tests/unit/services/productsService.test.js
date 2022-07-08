@@ -46,8 +46,8 @@ describe('Teste unitário do productsService', () => {
   describe('adiciona um novo produto', () => {
     it('deve retornar o produto adicionado', async () => {
       sinon.stub(productsModel, 'add').resolves({ insertId: INSERT_ID });
-      const result = await productsService.add(NEW_PRODUCT)
+      const result = await productsService.add(NEW_PRODUCT);
       expect(result).to.be.deep.equal(SAVED_PRODUCT);
-    })
-  })
+    });
+  });
 });
