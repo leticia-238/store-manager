@@ -5,5 +5,14 @@
   "extends": "trybe-backend",
   "rules": {
     "sonarjs/no-duplicate-string": ["error", 5]
-  }
+  },
+  "overrides": [
+    {
+      "files": "*.test.js",
+      "rules": {
+        "no-unused-expressions": "off",
+        "mocha/no-mocha-arrows": "off"
+      }
+    }
+  ]
 }
