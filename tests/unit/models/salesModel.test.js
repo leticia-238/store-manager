@@ -11,13 +11,13 @@ describe('Teste unitário do salesModel', () => {
   describe('lista os produtos que correspondem aos ids indicados', () => {
     it('deve retornar uma lista com os produtos encontrados', async () => {
       sinon.stub(db, 'query').resolves([PRODUCTS_LIST]);
-      const result = await salesModel.getByIds(PRODUCTS_LIST.map(({ id }) => id));
+      const result = await salesModel.getProductsByIds();
       expect(result).to.be.deep.equal(PRODUCTS_LIST);
     });
     
     it('deve retornar uma lista vazia se não encontrar nenhum produto', async () => {
       sinon.stub(db, 'query').resolves([[]]);
-      const result = await salesModel.getByIds();
+      const result = await salesModel.getProductsByIds();
       expect(result).to.be.deep.equal([]);
     });
   });
