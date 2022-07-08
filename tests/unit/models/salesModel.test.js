@@ -3,10 +3,32 @@ const sinon = require('sinon');
 const salesModel = require('../../../models/salesModel');
 const db = require('../../../models/db');
 
-const { PRODUCTS_LIST } = require('../data');
+const { PRODUCTS_LIST, SALES_LIST, SALE } = require('../data');
   
 describe('Teste unitário do salesModel', () => {
   afterEach(sinon.restore);
+  
+  describe('lista todas as vendas', () => {
+    it('deve retornar uma lista com todas as vendas', async () => {
+      sinon.stub(db, 'query').resolves([SALES_LIST]);
+      const result = await salesModel.getAllSales();
+      expect(result).to.be.deep.equal(SALES_LIST);
+    });
+  });
+  
+  describe('retorna a venda procurada pelo id', () => {
+    it('deve retornar a venda se ela for encontrada', async () => {
+      sinon.stub(db, 'query').resolves([SALE]);
+      const result = await salesModel.getSaleById();
+      expect(result).to.be.deep.equal(SALE);
+    });
+    
+    it('deve retornar um array vazio se a venda não for encontrada', async () => {
+      sinon.stub(db, 'query').resolves([[]]);
+      const result = await salesModel.getSaleById();
+      expect(result).to.be.empty;
+    });
+  });
   
   describe('lista os produtos que correspondem aos ids indicados', () => {
     it('deve retornar uma lista com os produtos encontrados', async () => {
