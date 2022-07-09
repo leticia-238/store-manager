@@ -12,6 +12,11 @@ const NEW_PRODUCT = { name: 'ProdutoX' };
 const INSERT_ID = 3;
 const SAVED_PRODUCT = { ...NEW_PRODUCT, id: INSERT_ID };
 
+const SALES_PRODUCTS = [
+  { productId: 1, quantity: 1 },
+  { productId: 2, quantity: 5 },
+];
+
 const SALES_LIST = [
   {
     saleId: 1,
@@ -40,12 +45,22 @@ const SALE = [
   },
 ];
 
+const SAVED_SALE = {
+  id: 3,
+  itemsSold: [
+    { productId: 1, quantity: 1 },
+    { productId: 2, quantity: 5 },
+  ],
+};
+
 module.exports = {
   PRODUCTS_LIST,
   PRODUCT,
   NEW_PRODUCT,
   INSERT_ID,
   SAVED_PRODUCT,
+  SALES_PRODUCTS,
   SALES_LIST,
   SALE,
+  SAVED_SALE,
 };
