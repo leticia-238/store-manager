@@ -3,7 +3,7 @@ const sinon = require('sinon');
 const salesModel = require('../../../models/salesModel');
 const db = require('../../../models/db');
 
-const { PRODUCTS_LIST, SALES_LIST, SALE } = require('../data');
+const { PRODUCTS_LIST, SALES_LIST, SALE, INSERT_ID, SALES_PRODUCTS } = require('../data');
   
 describe('Teste unitário do salesModel', () => {
   afterEach(sinon.restore);
@@ -44,17 +44,15 @@ describe('Teste unitário do salesModel', () => {
     });
   });
   
-  describe('adiciona um novo produto ou uma lista de produtos', () => {
+  describe('adiciona uma nova venda', () => {
     it('deve retornar o id da venda', async () => {
-      const INSERT_ID = 3;
-      
       sinon.stub(db, 'query')
         .onFirstCall()
         .resolves([{ insertId: INSERT_ID }])
         .onSecondCall()
         .resolves();
 
-      const result = await salesModel.add(PRODUCTS_LIST);
+      const result = await salesModel.add(SALES_PRODUCTS);
       expect(result).to.be.deep.equal(INSERT_ID);
     });
   });
