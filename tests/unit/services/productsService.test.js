@@ -9,7 +9,7 @@ const {
   PRODUCTS_LIST,
   PRODUCT, NEW_PRODUCT,
   INSERT_ID,
-  SAVED_PRODUCT } = require('../data');
+  SAVED_PRODUCT } = require('../data/productsData');
 
 chai.use(chaiAsPromised);
 

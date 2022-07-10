@@ -5,8 +5,10 @@ const NotFoundError = require('../../../errors/NotFoundError');
 const salesModel = require('../../../models/salesModel');
 const salesService = require('../../../services/salesService');
 
-const { SALES_LIST, SALE, SALES_PRODUCTS, PRODUCTS_LIST,
-  SAVED_SALE, INSERT_ID } = require('../data');
+const { SALES_LIST, SALE, SALES_PRODUCTS,
+  SAVED_SALE, INSERT_ID } = require('../data/salesData');
+  
+const { PRODUCTS_LIST } = require('../data/productsData');
 
 chai.use(chaiAsPromised);
 

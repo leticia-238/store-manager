@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const productsService = require('../../../services/productsService');
 const productsController = require('../../../controllers/productsController');
 
-const { PRODUCTS_LIST, PRODUCT, SAVED_PRODUCT } = require('../data');
+const { PRODUCTS_LIST, PRODUCT, SAVED_PRODUCT } = require('../data/productsData');
 const NotFoundError = require('../../../errors/NotFoundError');
 
 chai.use(chaiAsPromised);

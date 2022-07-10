@@ -3,7 +3,7 @@ const sinon = require('sinon');
 const productsModel = require('../../../models/productsModel');
 const db = require('../../../models/db');
 
-const { PRODUCTS_LIST, PRODUCT } = require('../data');
+const { PRODUCTS_LIST, PRODUCT } = require('../data/productsData');
   
 describe('Teste unitário do productsModel', () => {
   afterEach(sinon.restore);

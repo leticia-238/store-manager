@@ -1,22 +1,4 @@
-const PRODUCTS_LIST = [
-  { id: 1, name: 'Martelo de Thor' },
-  { id: 2, name: 'Traje de encolhimento' },
-];
-
-const PRODUCT = {
-  id: 1,
-  name: 'Martelo de Thor',
-};
-
-const NEW_PRODUCT = { name: 'ProdutoX' };
-const INSERT_ID = 3;
-const SAVED_PRODUCT = { ...NEW_PRODUCT, id: INSERT_ID };
-
-const SALES_PRODUCTS = [
-  { productId: 1, quantity: 1 },
-  { productId: 2, quantity: 5 },
-];
-
+// endpoint get /sales
 const SALES_LIST = [
   {
     saleId: 1,
@@ -32,6 +14,7 @@ const SALES_LIST = [
   },
 ];
 
+// enpoint get /sales/:id
 const SALE = [
   {
     date: '2021-09-09T04:54:29.000Z',
@@ -45,8 +28,16 @@ const SALE = [
   },
 ];
 
+// enpoint post /sales
+const SALES_PRODUCTS = [
+  { productId: 1, quantity: 1 },
+  { productId: 2, quantity: 5 },
+];
+
+const INSERT_ID = 3;
+
 const SAVED_SALE = {
-  id: 3,
+  id: INSERT_ID,
   itemsSold: [
     { productId: 1, quantity: 1 },
     { productId: 2, quantity: 5 },
@@ -54,13 +45,9 @@ const SAVED_SALE = {
 };
 
 module.exports = {
-  PRODUCTS_LIST,
-  PRODUCT,
-  NEW_PRODUCT,
-  INSERT_ID,
-  SAVED_PRODUCT,
   SALES_PRODUCTS,
   SALES_LIST,
   SALE,
+  INSERT_ID,
   SAVED_SALE,
 };

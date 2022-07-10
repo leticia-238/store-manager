@@ -3,8 +3,9 @@ const sinon = require('sinon');
 const salesModel = require('../../../models/salesModel');
 const db = require('../../../models/db');
 
-const { PRODUCTS_LIST, SALES_LIST, SALE, INSERT_ID, SALES_PRODUCTS } = require('../data');
-  
+const { SALES_LIST, SALE, SALES_PRODUCTS, INSERT_ID } = require('../data/salesData');
+const { PRODUCTS_LIST } = require('../data/productsData');
+
 describe('Teste unitário do salesModel', () => {
   afterEach(sinon.restore);
   
